@@ -1,1 +1,1 @@
-Convert words to numbers in macedonian language
+Convert numbers to words in macedonian language
