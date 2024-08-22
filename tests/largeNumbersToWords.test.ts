@@ -3,7 +3,7 @@ import { LargeNumbersOrder } from '../src/types';
 
 describe('Tests for the functions that process large numbers', () => {
 
-    it("should return single digit large numbers: from 1 - 9 ", () => {
+    it("should return single digit large numbers: from 1 - 9", () => {
             expect(toLargeOneDigitNumberWords(0, LargeNumbersOrder.Millions)).toBe("нула милиони");
             expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Thousands, { isLargestNumberOrderPart: true })).toBe("илјада");
             expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Thousands)).toBe("две илјади");
@@ -33,6 +33,7 @@ describe('Tests for the functions that process large numbers', () => {
         expect(toLargeThreeDigitNumberWords(632, LargeNumbersOrder.Billions)).toBe("шестотини триесет и две милијарди");
         expect(toLargeThreeDigitNumberWords(905, LargeNumbersOrder.Billions)).toBe("деветстотини и пет милијарди");
 
-    })
+    });
+    
 
 });

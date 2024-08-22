@@ -1,5 +1,5 @@
 import { NumberOrderType } from "../types";
-import { hasOnlyZerosAfterQuotitient } from "../utils/hasOnlyZerosAfterFirstDigit";
+import { hasOnlyZerosAfterQuotitient } from "../utils/hasOnlyZerosAfterQuotitient";
 import { isSmallNumbersOrder } from "../utils/isSmallNumbersOrder";
 
 export const AND = 'и';

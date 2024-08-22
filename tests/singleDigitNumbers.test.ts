@@ -59,31 +59,4 @@ describe('Convert number to words', () => {
         expect(toHundredsWords(905)).toBe("деветстотини и пет");
         expect(toHundredsWords(915)).toBe("деветстотини и петнаесет");
     });
-
-/* 
-    it("Should describe thousands", () => {
-        expect(convertToWords(1001)).toBe("илјада и еден");
-        expect(convertToWords(1010)).toBe("илјада и десет");
-        expect(convertToWords(1100)).toBe("илјада и сто");
-        expect(convertToWords(1011)).toBe("илјада и единаесет");
-        // expect(convertToWords(2000)).toBe("две илјади");
-       // expect(convertToWords(2456)).toBe("две илјади четиристотини педесет и шест");
-        expect(convertToWords(3000)).toBe("три илјади");
-        expect(convertToWords(4000)).toBe("четири илјади");
-        expect(convertToWords(5000)).toBe("пет илјади");
-        expect(convertToWords(6000)).toBe("шест илјади");
-        expect(convertToWords(7000)).toBe("седум илјади");
-        expect(convertToWords(8000)).toBe("осум илјади");
-        expect(convertToWords(8431)).toBe("осумдесет седум илјади четиристотини триесет и два");
-        expect(convertToWords(9000)).toBe("девет илјади");
-        expect(convertToWords(9999)).toBe("девет илјади деветстотини деведесет и девет");
-        expect(convertToWords(10000)).toBe("десет илјади");
-        expect(convertToWords(11200)).toBe("единаесет илјади и двесте");
-        expect(convertToWords(15222)).toBe("петнаесет илјади двесте дваесет и два");
-        expect(convertToWords(90000)).toBe("деведесет илјади");
-        expect(convertToWords(100000)).toBe("сто илјади");
-        expect(convertToWords(876513)).toBe("осумстотини седумдесет шестилјади петстотини и тринаесет");
-    }); */
-
-
 });
