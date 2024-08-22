@@ -1,7 +1,7 @@
-import { toHundredsWords } from "./toHundredsWords";
-import { toTensWords } from "./toTensWords";
-import { toUnitsWords } from "./toUnitsWords";
-import { numberLenght } from "./utils/numberLenght";
+import { toHundredsWords } from './toHundredsWords';
+import { toTensWords } from './toTensWords';
+import { toUnitsWords } from './toUnitsWords';
+import { numberLenght } from './utils/numberLenght';
 
 export const smallNumbersToWords = (num: number) => {
   const numLenght = numberLenght(num);

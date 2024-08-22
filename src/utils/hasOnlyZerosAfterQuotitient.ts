@@ -1,7 +1,7 @@
-import { getClassifiedNumberByLenght } from "../grammar/numberClassification";
-import { numberLenght } from "./numberLenght";
+import { getClassifiedNumberByLenght } from '../grammar/numberClassification';
+import { numberLenght } from './numberLenght';
 
 export const hasOnlyZerosAfterQuotitient = (reminder: number): boolean => {
-    const classifiedNum = getClassifiedNumberByLenght(numberLenght(reminder));
-    return (reminder % classifiedNum.divider) === 0;
-}
+  const classifiedNum = getClassifiedNumberByLenght(numberLenght(reminder));
+  return reminder % classifiedNum.divider === 0;
+};
