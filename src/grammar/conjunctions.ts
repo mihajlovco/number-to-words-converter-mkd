@@ -20,9 +20,7 @@ export const shouldAppendAnd = (quotient: number, order: NumberOrderType, isLast
     }
 
     // 20, 50, 100, 200, 10000, 50000 ...
-    console.log("hasOnlyZerosAfterQuotitient pred", quotient);
     if (hasOnlyZerosAfterQuotitient(quotient)) {
-        console.log("hasOnlyZerosAfterQuotitient pomina");
         return true;
     }
 
