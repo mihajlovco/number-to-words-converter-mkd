@@ -4,13 +4,13 @@ import { LargeNumbersOrder } from '../src/types';
 describe('Tests for the functions that process large numbers', () => {
 
     it("should return single digit large numbers: from 1 - 9", () => {
-            expect(toLargeOneDigitNumberWords(0, LargeNumbersOrder.Millions)).toBe("нула милиони");
-            expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Thousands, { isLargestNumberOrderPart: true })).toBe("илјада");
-            expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Thousands)).toBe("две илјади");
-            expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Millions, { isLargestNumberOrderPart: true })).toBe("милион");
-            expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Millions)).toBe("два милиони");
-            expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Billions)).toBe("една милијарда");
-            expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Billions)).toBe("две милијарди");
+        expect(toLargeOneDigitNumberWords(0, LargeNumbersOrder.Millions)).toBe("нула милиони");
+        expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Thousands, { isLargestNumberOrderPart: true })).toBe("илјада");
+        expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Thousands)).toBe("две илјади");
+        expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Millions, { isLargestNumberOrderPart: true })).toBe("милион");
+        expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Millions)).toBe("два милиони");
+        expect(toLargeOneDigitNumberWords(1, LargeNumbersOrder.Billions)).toBe("една милијарда");
+        expect(toLargeOneDigitNumberWords(2, LargeNumbersOrder.Billions)).toBe("две милијарди");
   
     });
 
