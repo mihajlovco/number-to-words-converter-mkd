@@ -1,5 +1,5 @@
 import { toLargeOneDigitNumberWords, toLargeThreeDigitNumberWords, toLargeTwoDigitNumberWords } from '../src/toLargeNumbersWords';
-import { LargeNumbersOrder } from '../src/types';
+import { LargeNumbersOrder } from '../types';
 
 describe('Tests for the functions that process large numbers', () => {
 

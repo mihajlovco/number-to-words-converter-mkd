@@ -1,4 +1,4 @@
-import { ClassifiedNumber, NumberOrderType } from '../types';
+import { ClassifiedNumber, NumberOrderType } from '../../types';
 
 // // max '999' bilions + '999' milions + '999' thousnds + '999' hundreds + '99' tends + '9' units
 export const billions = {

@@ -1,4 +1,4 @@
-import { NumberOrderType } from '../types';
+import { NumberOrderType } from '../../types';
 import { hasOnlyZerosAfterQuotitient } from '../utils/hasOnlyZerosAfterQuotitient';
 import { isSmallNumbersOrder } from '../utils/isSmallNumbersOrder';
 
