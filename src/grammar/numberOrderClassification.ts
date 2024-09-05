@@ -37,34 +37,26 @@ export const units = {
   divider: 1
 } as ClassifiedNumber;
 
+const numberLenghtToClassifiedNumberMap = {
+  '0': units,
+  '1': units,
+  '2': tens,
+  '3': hundreds,
+  '4': thousands,
+  '5': thousands,
+  '6': thousands,
+  '7': millions,
+  '8': millions,
+  '9': millions,
+  '10': billions,
+  '11': billions,
+  '12': billions
+}
+
 export const getClassifiedNumberByLenght = (
   numberLenght: number
 ): ClassifiedNumber | null => {
-  if (numberLenght === 0 || numberLenght === 1) {
-    return units;
-  }
-
-  if (numberLenght === 2) {
-    return tens;
-  }
-
-  if (numberLenght === 3) {
-    return hundreds;
-  }
-
-  if (numberLenght >= 4 && numberLenght <= 6) {
-    return thousands;
-  }
-
-  if (numberLenght >= 7 && numberLenght <= 9) {
-    return millions;
-  }
-
-  if (numberLenght >= 10 && numberLenght <= 12) {
-    return billions;
-  }
-
-  return null;
+  return numberLenghtToClassifiedNumberMap[numberLenght] ?? null;
 };
 
 export const getClassifiedNumberByOrder = (
@@ -85,3 +77,6 @@ export const getClassifiedNumberByOrder = (
 
   return units;
 };
+
+
+
