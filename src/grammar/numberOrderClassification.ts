@@ -51,7 +51,7 @@ const numberLenghtToClassifiedNumberMap = {
   '10': billions,
   '11': billions,
   '12': billions
-}
+};
 
 export const getClassifiedNumberByLenght = (
   numberLenght: number
@@ -77,6 +77,3 @@ export const getClassifiedNumberByOrder = (
 
   return units;
 };
-
-
-

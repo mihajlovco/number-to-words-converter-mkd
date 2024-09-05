@@ -1,4 +1,4 @@
 // api
-export { toWords } from "./src/index";
+export { toWords } from './src/index';
 // types
-export * as types from "./types";
+export * as types from './types';

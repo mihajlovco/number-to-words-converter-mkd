@@ -5,9 +5,9 @@
   "scripts": {
     "build": "npx tsc",
     "test": "jest",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint --ignore-path .eslintignore --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "ci": "npm run lint && npm run test && npm run build",
     "release": "npm run lint && npm run test && npm run build && changeset publish",
     "prepare": "husky"

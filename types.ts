@@ -34,8 +34,3 @@ export type Dictionary = {
     sufixUnder20?: string;
   };
 };
-
-
-export interface Config {
-  classifiedNumberOrder: ClassifiedNumber[];
-}

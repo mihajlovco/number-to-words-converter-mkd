@@ -22,7 +22,7 @@ export const convertToWords = (number: number): string => {
   // Flag to indicate if we're processing the largest(or the first) part of the number
   let isLargestNumberOrderPart = true;
 
-   // Process large number parts (e.g., millions, billions)
+  // Process large number parts (e.g., millions, billions)
   while (isLargeNumbersOrder(classifiedNumber.order)) {
     const { quotient, reminder } = splitNumber(
       currentNumber,
@@ -58,7 +58,7 @@ export const convertToWords = (number: number): string => {
           classifiedNumber.order,
           isLastLargeOrderNumberPart
         ) && reminder === 0;
-        
+
       words += shouldAppend
         ? appendAnd.before(currentLargeNumberWords)
         : ` ${currentLargeNumberWords}`;
@@ -75,9 +75,9 @@ export const convertToWords = (number: number): string => {
     return words;
   }
 
- // Process the remaining small number or smaller that 1000 (if any).
+  // Process the remaining small number or smaller that 1000 (if any).
   const smallNumberWords = smallNumbersToWords(currentNumber);
-  
+
   // Determine if we need to append 'and' before the small number
   if (shouldAppendAnd(currentNumber, classifiedNumber.order)) {
     const result = `${appendAnd.after(words)}${smallNumberWords}`;
