@@ -6,4 +6,4 @@ function getVersionMessage(releasePlan) {
   return releasePlan.releases.find((x) => x.newVersion).newVersion;
 }
 
-module.export = { getAddMessage, getVersionMessage };
+module.exports = { getAddMessage, getVersionMessage };
