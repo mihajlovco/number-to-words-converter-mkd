@@ -1,8 +1,8 @@
-async function getAddMessage() {
+function getAddMessage() {
   return 'changesets: publish new package version to npm';
 }
 
-async function getVersionMessage(releasePlan) {
+function getVersionMessage(releasePlan) {
   return releasePlan.releases.find((x) => x.newVersion).newVersion;
 }
 
