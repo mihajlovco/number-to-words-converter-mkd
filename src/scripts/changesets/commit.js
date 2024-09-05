@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getAddMessage() {
+function getAddMessage() {
   return 'changesets: publish version 0.0.3 to npm';
 }
+
+module.exports = { getAddMessage };
