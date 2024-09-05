@@ -15,7 +15,8 @@ module.exports = {
         'test',
         'revert',
         'perf',
-        'vercel'
+        'vercel',
+        'changeset'
       ]
     ]
   }
