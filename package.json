@@ -2,7 +2,10 @@
   "name": "@m9c/number-to-words-converter-mkd",
   "version": "0.0.4",
   "main": "dist/index.js",
-  "repository": "https://github.com/mihajlovco/number-to-words-converter-mkd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihajlovco/number-to-words-converter-mkd.git"
+  },
   "scripts": {
     "build": "npx tsc",
     "test": "jest",
