@@ -1,5 +1,11 @@
 # number-to-words-converter-mkd
 
+## 1.0.0
+
+### Major Changes
+
+- Harden the public API and package delivery for v1 by enforcing strict integer/range validation, improving type safety, migrating CI workflows to pnpm, and expanding release and contributor documentation.
+
 ## Unreleased
 
 ### Changed

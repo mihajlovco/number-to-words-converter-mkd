@@ -1,6 +1,6 @@
 {
   "name": "@m9c/number-to-words-converter-mkd",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Number to words converter in macedonian language",
   "license": "MIT",
   "author": "Sasho Mihajlov",
