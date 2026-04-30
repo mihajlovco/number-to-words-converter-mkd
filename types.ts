@@ -40,3 +40,11 @@ export type DictionaryEntry = {
 export type Dictionary = Record<NumberOrderType, DictionaryEntry> & {
   minus: string;
 };
+
+export type ToWordsOptions = {
+  /**
+   * When true (default), only finite integers are accepted.
+   * When false, finite floats are truncated toward zero with `Math.trunc` before conversion.
+   */
+  strictInteger?: boolean;
+};

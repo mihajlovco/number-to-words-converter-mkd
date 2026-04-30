@@ -8,6 +8,10 @@
 
 ## Unreleased
 
+### Added
+
+- Optional `toWords(value, { strictInteger?: boolean })`: opt-in truncation of finite floats with `Math.trunc` while keeping strict integer validation by default.
+
 ### Changed
 
 - Hardened API contract with strict integer/range validation and typed errors.

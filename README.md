@@ -33,6 +33,10 @@ toWords(381401152);
 
 toWords(-1201);
 // минус илјада двесте и еден
+
+// Opt-in: truncate finite floats toward zero (ignore fractional part)
+toWords(12.9, { strictInteger: false });
+// исто како toWords(12)
 ```
 
 ### CommonJS example (Node.js)
@@ -53,10 +57,11 @@ const values = [12.5, Number.NaN, 1000000000000];
 
 for (const value of values) {
   try {
-    console.log(toWords(value));
+    // Use { strictInteger: false } if you intentionally want float truncation
+    console.log(toWords(value, { strictInteger: false }));
   } catch (error) {
     if (error instanceof TypeError) {
-      console.error('Invalid input: expected a finite integer.');
+      console.error('Invalid input: expected a finite number (integer by default).');
     } else if (error instanceof RangeError) {
       console.error('Out of range: expected absolute value <= 999_999_999_999.');
     } else {
@@ -68,19 +73,31 @@ for (const value of values) {
 
 ## API
 
-### `toWords(value: number): string`
+### `toWords(value: number, options?: ToWordsOptions): string`
 
 Converts an integer number into Macedonian words.
 
+#### Options
+
+- `strictInteger` (optional, default `true`): when `false`, finite floats are accepted and truncated toward zero with `Math.trunc` before conversion. Use this only when you explicitly accept losing the fractional part.
+
+You can import the options type:
+
+```ts
+import type { ToWordsOptions } from '@m9c/number-to-words-converter-mkd';
+```
+
 #### Input contract
 
-- `value` must be a finite integer.
-- Supported absolute range is `<= 999_999_999_999`.
+- `value` must be a finite number.
+- By default (`strictInteger` omitted or `true`), `value` must be an integer.
+- When `strictInteger` is `false`, non-integer finite values are truncated; `NaN` and `Infinity` still throw.
+- Supported absolute range (after any truncation) is `<= 999_999_999_999`.
 
 #### Errors
 
-- Throws `TypeError` when `value` is not a finite integer.
-- Throws `RangeError` when `value` is outside the supported range.
+- Throws `TypeError` when `value` is not finite, or when it is not an integer while `strictInteger` is true.
+- Throws `RangeError` when the value used for conversion (after truncation if applicable) is outside the supported range.
 
 ## Supported number range
 
