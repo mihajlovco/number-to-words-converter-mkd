@@ -1,9 +1,9 @@
 import { dictionary } from './dictionary';
 import { toUnitsWords } from './toUnitsWords';
 
-export const toTensWords = (number: number): string | null => {
-  if (number > 99) {
-    return null;
+export const toTensWords = (number: number): string => {
+  if (number < 0 || number > 99) {
+    throw new RangeError('Tens conversion supports numbers between 0 and 99.');
   }
 
   if (number < 10) {
@@ -21,7 +21,7 @@ export const toTensWords = (number: number): string | null => {
   // 12, 13, 17 ... 19 have sufix
   if (number < 20) {
     // last number name plus sufix will give the word
-    return toUnitsWords(reminder) + dictionary.tens.sufixUnder20;
+    return toUnitsWords(reminder) + dictionary.tens.suffixUnder20;
   }
 
   const quotient = Math.floor(number / 10) * 10; // to match the dictionary of 10, 20, 30...

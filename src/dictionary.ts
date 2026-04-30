@@ -1,4 +1,6 @@
-export const dictionary = {
+import { Dictionary } from '../types';
+
+export const dictionary: Dictionary = {
   units: {
     '0': 'нула',
     '1': 'еден',
@@ -11,7 +13,8 @@ export const dictionary = {
     '8': 'осум',
     '9': 'девет',
     singularSuffix: '',
-    pluralSufix: ''
+    pluralSuffix: '',
+    suffixUnder20: ''
   },
   tens: {
     '10': 'десет',
@@ -25,35 +28,39 @@ export const dictionary = {
     '70': 'седумдесет',
     '80': 'осумдесет',
     '90': 'деведесет',
-    sufixUnder20: 'наесет',
-    singularSufix: '',
-    pluralSufix: ''
+    suffixUnder20: 'наесет',
+    singularSuffix: '',
+    pluralSuffix: ''
   },
   hundreds: {
     '100': 'сто',
     '200': 'двесте',
     '300': 'триста',
     '600': 'шестотини',
-    singularSufix: '',
-    pluralSufix: 'стотини'
+    singularSuffix: '',
+    pluralSuffix: 'стотини',
+    suffixUnder20: ''
   },
   thousands: {
     '1': 'една',
     '2': 'две',
-    singularSufix: 'илјада',
-    pluralSufix: 'илјади'
+    singularSuffix: 'илјада',
+    pluralSuffix: 'илјади',
+    suffixUnder20: ''
   },
   millions: {
     '1': 'еден',
     '2': 'два',
-    singularSufix: 'милион',
-    pluralSufix: 'милиони'
+    singularSuffix: 'милион',
+    pluralSuffix: 'милиони',
+    suffixUnder20: ''
   },
   billions: {
     '1': 'една',
     '2': 'две',
-    singularSufix: 'милијарда',
-    pluralSufix: 'милијарди'
+    singularSuffix: 'милијарда',
+    pluralSuffix: 'милијарди',
+    suffixUnder20: ''
   },
   minus: 'минус'
 };

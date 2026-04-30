@@ -164,4 +164,30 @@ describe('Convert number to words', () => {
   test('converts zero to word', () => {
     expect(toWords(0)).toBe('нула');
   });
+
+  test('throws for invalid non-integer inputs', () => {
+    expect(() => toWords(12.5)).toThrow(TypeError);
+    expect(() => toWords(Number.NaN)).toThrow(TypeError);
+    expect(() => toWords(Number.POSITIVE_INFINITY)).toThrow(TypeError);
+    expect(() => toWords(Number.NEGATIVE_INFINITY)).toThrow(TypeError);
+  });
+
+  test('throws for unsupported range', () => {
+    expect(() => toWords(1000000000000)).toThrow(RangeError);
+    expect(() => toWords(-1000000000000)).toThrow(RangeError);
+  });
+
+  test('handles contract boundaries and keeps output normalized', () => {
+    expect(toWords(999999999999)).toBe(
+      'деветстотини деведесет и девет милијарди деветстотини деведесет и девет милиони деветстотини деведесет и девет илјади деветстотини деведесет и девет'
+    );
+    expect(toWords(-999999999999)).toBe(
+      'минус деветстотини деведесет и девет милијарди деветстотини деведесет и девет милиони деветстотини деведесет и девет илјади деветстотини деведесет и девет'
+    );
+
+    const sample = toWords(381401152);
+    expect(sample).not.toContain('  ');
+    expect(sample.trim()).toBe(sample);
+    expect(toWords(381401152)).toBe(toWords(381401152));
+  });
 });

@@ -8,7 +8,7 @@ import {
   LargeNumbersMetaOptions,
   LargeNumbersOrder
 } from '../types';
-import { numberLenght } from './utils/numberLenght';
+import { numberLength } from './utils/numberLength';
 
 /**
  * Large numbers are considered from thousnds and bigger numbers in order
@@ -21,16 +21,16 @@ export const largeNumberPartToWords = (
   classifiedNumber: ClassifiedNumber,
   options?: Partial<LargeNumbersMetaOptions>
 ): string => {
-  const lenght = numberLenght(number);
+  const length = numberLength(number);
 
-  if (lenght === 1)
+  if (length === 1)
     return toLargeOneDigitNumberWords(
       number,
       classifiedNumber.order as LargeNumbersOrder,
       { ...options }
     );
   const words =
-    lenght === 2
+    length === 2
       ? toLargeTwoDigitNumberWords(
           number,
           classifiedNumber.order as LargeNumbersOrder
@@ -67,22 +67,22 @@ export const toLargeOneDigitNumberWords = (
     if (options?.isLargestNumberOrderPart) {
       // When the number is first and largest order number, skip the number and add the order name
       // милион
-      return `${dictionary[order].singularSufix}`;
+      return `${dictionary[order].singularSuffix}`;
     }
     // number and order name
     // еден милион
-    return `${dictionary[order]['1']} ${dictionary[order].singularSufix}`;
+    return `${dictionary[order]['1']} ${dictionary[order].singularSuffix}`;
   }
 
   // 2000 - две илјади
   if (number === 2) {
     // special cases for thousands and billions
     // Example: две илјади, две милијарди
-    return `${dictionary[order]['2']} ${dictionary[order].pluralSufix}`;
+    return `${dictionary[order]['2']} ${dictionary[order].pluralSuffix}`;
   }
 
   // the rest are the standard numbering
-  return `${toUnitsWords(number)} ${dictionary[order].pluralSufix}`;
+  return `${toUnitsWords(number)} ${dictionary[order].pluralSuffix}`;
 };
 
 export const toLargeTwoDigitNumberWords = (
@@ -95,11 +95,11 @@ export const toLargeTwoDigitNumberWords = (
   }
 
   if (number > 99) {
-    throw "Larger number then 99 can't converted.";
+    throw new RangeError('Larger number than 99 cannot be converted.');
   }
 
   if (number > 9 && number < 20) {
-    return `${toTensWords(number)} ${dictionary[order].pluralSufix}`;
+    return `${toTensWords(number)} ${dictionary[order].pluralSuffix}`;
   }
 
   // the rest of the numbers bigger than 19
@@ -111,7 +111,7 @@ export const toLargeTwoDigitNumberWords = (
     return `${toTensWords(quotient * 10)} ${AND} ${toLargeOneDigitNumberWords(reminder, order, { isLargestNumberOrderPart: false })}`;
   }
   // case 43 - четириесет и три илјади
-  return `${toTensWords(number)} ${dictionary[order].pluralSufix}`;
+  return `${toTensWords(number)} ${dictionary[order].pluralSuffix}`;
 };
 
 export const toLargeThreeDigitNumberWords = (
@@ -123,7 +123,7 @@ export const toLargeThreeDigitNumberWords = (
 
   // 100 - сто илјади
   if (reminder === 0) {
-    return `${toHundredsWords(number)} ${dictionary[order].pluralSufix}`;
+    return `${toHundredsWords(number)} ${dictionary[order].pluralSuffix}`;
   }
 
   // Examples  with case where reminder is not zero
@@ -142,5 +142,5 @@ export const toLargeThreeDigitNumberWords = (
 
   // 114 - сто и четиринаесет
   // 130 - сто и триесет
-  return `${toHundredsWords(number)} ${dictionary[order].pluralSufix}`;
+  return `${toHundredsWords(number)} ${dictionary[order].pluralSuffix}`;
 };

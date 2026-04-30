@@ -1,7 +1,6 @@
-import { getClassifiedNumberByLenght } from '../grammar/numberOrderClassification';
-import { numberLenght } from './numberLenght';
+import { hasOnlyZerosAfterQuotient } from './hasOnlyZerosAfterQuotient';
 
-export const hasOnlyZerosAfterQuotitient = (reminder: number): boolean => {
-  const classifiedNum = getClassifiedNumberByLenght(numberLenght(reminder));
-  return reminder % classifiedNum.divider === 0;
-};
+export { hasOnlyZerosAfterQuotient } from './hasOnlyZerosAfterQuotient';
+
+// Backward-compatible alias for internal typo migration.
+export const hasOnlyZerosAfterQuotitient = hasOnlyZerosAfterQuotient;

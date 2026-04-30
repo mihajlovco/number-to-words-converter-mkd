@@ -1,3 +1,7 @@
-export const isValidNumber = (number: number | string): boolean => {
-  return !isNaN(parseFloat(number as string)) && isFinite(number as number);
+export const isValidNumber = (value: unknown): value is number => {
+  return (
+    typeof value === 'number' &&
+    Number.isFinite(value) &&
+    Number.isInteger(value)
+  );
 };

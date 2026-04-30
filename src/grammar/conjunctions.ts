@@ -1,5 +1,5 @@
 import { NumberOrderType } from '../../types';
-import { hasOnlyZerosAfterQuotitient } from '../utils/hasOnlyZerosAfterQuotitient';
+import { hasOnlyZerosAfterQuotient } from '../utils/hasOnlyZerosAfterQuotient';
 import { isSmallNumbersOrder } from '../utils/isSmallNumbersOrder';
 
 export const AND = 'и';
@@ -19,11 +19,11 @@ export const shouldAppendAnd = (
 ): boolean => {
   // Example: 1-19
   if (quotient > 0 && quotient < 20) {
-    return isSmallNumbersOrder(order) || isLastNumber;
+    return isSmallNumbersOrder(order) || Boolean(isLastNumber);
   }
 
   // 20, 50, 100, 200, 10000, 50000 ...
-  if (hasOnlyZerosAfterQuotitient(quotient)) {
+  if (hasOnlyZerosAfterQuotient(quotient)) {
     return true;
   }
 

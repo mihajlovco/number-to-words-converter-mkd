@@ -1,5 +1,9 @@
 import { SmallNumbersOrder } from '../../types';
 
 export function isSmallNumbersOrder(value: string): value is SmallNumbersOrder {
-  return Object.values(SmallNumbersOrder).includes(value as SmallNumbersOrder);
+  return (
+    value === SmallNumbersOrder.Units ||
+    value === SmallNumbersOrder.Tens ||
+    value === SmallNumbersOrder.Hundreds
+  );
 }

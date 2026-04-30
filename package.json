@@ -1,20 +1,47 @@
 {
   "name": "@m9c/number-to-words-converter-mkd",
   "version": "0.0.4",
+  "description": "Number to words converter in macedonian language",
+  "license": "MIT",
+  "author": "Sasho Mihajlov",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@8.15.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mihajlovco/number-to-words-converter-mkd.git"
   },
+  "bugs": {
+    "url": "https://github.com/mihajlovco/number-to-words-converter-mkd/issues"
+  },
+  "homepage": "https://github.com/mihajlovco/number-to-words-converter-mkd#readme",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc -p tsconfig.json",
     "test": "jest",
-    "lint": "eslint --ignore-path .eslintignore --ext .ts",
+    "lint": "eslint . --ignore-path .eslintignore --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "ci": "npm run lint && npm run test && npm run build",
-    "release": "npm run lint && npm run test && npm run build && changeset publish",
-    "prepare": "husky"
+    "ci": "pnpm run lint && pnpm run test && pnpm run build",
+    "release": "pnpm run ci && changeset publish",
+    "prepare": "husky",
+    "prepack": "pnpm run build"
   },
   "keywords": [
     "number",
@@ -23,10 +50,9 @@
     "mkd",
     "converter"
   ],
-  "author": "Sasho Mihajlov",
-  "license": "MIT",
-  "description": "Number to words converter in macedonian language",
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
+    "@changesets/types": "^6.0.0",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@types/jest": "^29.5.12",
@@ -41,9 +67,5 @@
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.16.1"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.27.7",
-    "@changesets/types": "^6.0.0"
   }
 }
