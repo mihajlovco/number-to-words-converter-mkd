@@ -14,14 +14,56 @@ npm install @m9c/number-to-words-converter-mkd
 
 ## Usage
 
+### Basic examples (TypeScript / ESM)
+
 ```ts
 import { toWords } from '@m9c/number-to-words-converter-mkd';
+
+toWords(0);
+// нула
+
+toWords(21);
+// дваесет и еден
+
+toWords(1999);
+// илјада деветстотини деведесет и девет
 
 toWords(381401152);
 // триста осумдесет и еден милион четиристотини и една илјада сто педесет и два
 
 toWords(-1201);
 // минус илјада двесте и еден
+```
+
+### CommonJS example (Node.js)
+
+```js
+const { toWords } = require('@m9c/number-to-words-converter-mkd');
+
+console.log(toWords(1234567));
+// милион двесте триесет и четири илјади петстотини шеесет и седум
+```
+
+### Error handling example
+
+```ts
+import { toWords } from '@m9c/number-to-words-converter-mkd';
+
+const values = [12.5, Number.NaN, 1000000000000];
+
+for (const value of values) {
+  try {
+    console.log(toWords(value));
+  } catch (error) {
+    if (error instanceof TypeError) {
+      console.error('Invalid input: expected a finite integer.');
+    } else if (error instanceof RangeError) {
+      console.error('Out of range: expected absolute value <= 999_999_999_999.');
+    } else {
+      console.error('Unexpected conversion error.');
+    }
+  }
+}
 ```
 
 ## API
@@ -60,6 +102,65 @@ This project uses [Changesets](https://github.com/changesets/changesets) and pnp
 
 - Add a changeset in your PR when package behavior changes.
 - Publishing is handled by the `Publish` GitHub workflow on `main`.
+
+## Publishing for Maintainers
+
+### 1) Prepare and verify your local branch
+
+```bash
+pnpm install
+pnpm run ci
+```
+
+### 2) Add a changeset (if your PR changes package behavior)
+
+```bash
+pnpm changeset
+```
+
+Choose the package and bump type (`patch`, `minor`, `major`), then add a short summary.
+
+### 3) Create the version bump and changelog update
+
+```bash
+pnpm changeset version
+```
+
+This updates `package.json` version and `CHANGELOG.md`.
+
+### 4) Commit and push versioning changes
+
+```bash
+git add .
+git commit -m "chore: release version bump"
+git push
+```
+
+### 5) Authenticate with npm
+
+```bash
+npm login
+npm whoami
+```
+
+If account access is lost, use npm recovery pages:
+- [Forgot username](https://www.npmjs.com/forgot)
+- [Forgot password](https://www.npmjs.com/forgot)
+- [npm Support](https://www.npmjs.com/support)
+
+### 6) Publish
+
+```bash
+pnpm release
+```
+
+This runs `pnpm run ci` and then `changeset publish`.
+
+### 7) Verify the published version
+
+```bash
+npm view @m9c/number-to-words-converter-mkd version
+```
 
 ## Contributing
 
