@@ -178,9 +178,9 @@ describe('Convert number to words', () => {
     expect(toWords(999_999_999_999.9, { strictInteger: false })).toEqual(
       toWords(999_999_999_999)
     );
-    expect(() =>
-      toWords(1000000000000.1, { strictInteger: false })
-    ).toThrow(RangeError);
+    expect(() => toWords(1000000000000.1, { strictInteger: false })).toThrow(
+      RangeError
+    );
   });
 
   test('rejects NaN and Infinity even when strictInteger is false', () => {
