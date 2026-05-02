@@ -1,6 +1,33 @@
-# @m9c/number-to-words-converter-mkd
+# Convert numbers to words on Macedonian language
 
-Convert integer numbers to Macedonian words.
+Package: `@m9c/number-to-words-converter-mkd`
+
+Convert integer numbers to Macedonian words with a small, focused API for Node.js and TypeScript projects.
+
+## npm
+
+[![npm version](https://img.shields.io/npm/v/@m9c/number-to-words-converter-mkd.svg?logo=npm)](https://www.npmjs.com/package/@m9c/number-to-words-converter-mkd)
+
+- npm page: [@m9c/number-to-words-converter-mkd](https://www.npmjs.com/package/@m9c/number-to-words-converter-mkd)
+
+## Table of Contents
+
+- [Why this package](#why-this-package)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Supported number range](#supported-number-range)
+- [Contributing](#contributing)
+- [Open to contributions and corrections](#open-to-contributions-and-corrections)
+- [Maintainer docs](#maintainer-docs)
+- [Security](#security)
+- [License](#license)
+
+## Why this package
+
+- Converts numeric values to Macedonian words in a consistent format.
+- Supports ESM and CommonJS usage.
+- Validates input and throws clear errors for invalid values.
 
 ## Installation
 
@@ -57,7 +84,7 @@ const values = [12.5, Number.NaN, 1000000000000];
 
 for (const value of values) {
   try {
-    // Use { strictInteger: false } if you intentionally want float truncation
+    // Use { strictInteger: false } if you intentionally want float truncation.
     console.log(toWords(value, { strictInteger: false }));
   } catch (error) {
     if (error instanceof TypeError) {
@@ -75,11 +102,11 @@ for (const value of values) {
 
 ### `toWords(value: number, options?: ToWordsOptions): string`
 
-Converts an integer number into Macedonian words.
+Converts a number to Macedonian words.
 
 #### Options
 
-- `strictInteger` (optional, default `true`): when `false`, finite floats are accepted and truncated toward zero with `Math.trunc` before conversion. Use this only when you explicitly accept losing the fractional part.
+- `strictInteger` (optional, default `true`): when `false`, finite floats are accepted and truncated toward zero with `Math.trunc` before conversion. Use this only when you intentionally allow the fractional part to be discarded.
 
 You can import the options type:
 
@@ -92,96 +119,36 @@ import type { ToWordsOptions } from '@m9c/number-to-words-converter-mkd';
 - `value` must be a finite number.
 - By default (`strictInteger` omitted or `true`), `value` must be an integer.
 - When `strictInteger` is `false`, non-integer finite values are truncated; `NaN` and `Infinity` still throw.
-- Supported absolute range (after any truncation) is `<= 999_999_999_999`.
+- Supported absolute range (after truncation, when applicable) is `<= 999_999_999_999`.
 
 #### Errors
 
-- Throws `TypeError` when `value` is not finite, or when it is not an integer while `strictInteger` is true.
-- Throws `RangeError` when the value used for conversion (after truncation if applicable) is outside the supported range.
+- `TypeError`: `value` is not finite, or it is not an integer while `strictInteger` is `true`.
+- `RangeError`: value used for conversion (after truncation when enabled) is outside the supported range.
+
+Quick troubleshooting: if the number format is invalid use `TypeError` handling; if the number is too large/small use `RangeError` handling.
 
 ## Supported number range
 
 - Minimum: `-999_999_999_999`
 - Maximum: `999_999_999_999`
 
-## Development
-
-```bash
-pnpm install
-pnpm run lint
-pnpm run test
-pnpm run build
-```
-
-## Release process
-
-This project uses [Changesets](https://github.com/changesets/changesets) and pnpm.
-
-- Add a changeset in your PR when package behavior changes.
-- Publishing is handled by the `Publish` GitHub workflow on `main`.
-
-## Publishing for Maintainers
-
-### 1) Prepare and verify your local branch
-
-```bash
-pnpm install
-pnpm run ci
-```
-
-### 2) Add a changeset (if your PR changes package behavior)
-
-```bash
-pnpm changeset
-```
-
-Choose the package and bump type (`patch`, `minor`, `major`), then add a short summary.
-
-### 3) Create the version bump and changelog update
-
-```bash
-pnpm changeset version
-```
-
-This updates `package.json` version and `CHANGELOG.md`.
-
-### 4) Commit and push versioning changes
-
-```bash
-git add .
-git commit -m "chore: release version bump"
-git push
-```
-
-### 5) Authenticate with npm
-
-```bash
-npm login
-npm whoami
-```
-
-If account access is lost, use npm recovery pages:
-- [Forgot username](https://www.npmjs.com/forgot)
-- [Forgot password](https://www.npmjs.com/forgot)
-- [npm Support](https://www.npmjs.com/support)
-
-### 6) Publish
-
-```bash
-pnpm release
-```
-
-This runs `pnpm run ci` and then `changeset publish`.
-
-### 7) Verify the published version
-
-```bash
-npm view @m9c/number-to-words-converter-mkd version
-```
-
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+Contributors are welcome to open a pull request.
+
+- Start with [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
+- Include a changeset in your PR when package behavior changes.
+
+## Open to contributions and corrections
+
+I am open for contributions, improvements, and any corrections.
+
+If you see an issue in wording, grammar, examples, or conversion behavior, please open an issue or submit a PR.
+
+## Maintainer docs
+
+Maintainer-specific release and development workflows are documented in [docs/maintainers.md](./docs/maintainers.md).
 
 ## Security
 
