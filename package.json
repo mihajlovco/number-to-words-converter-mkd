@@ -43,6 +43,9 @@
     "prepare": "husky",
     "prepack": "pnpm run build"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "number",
     "words",
