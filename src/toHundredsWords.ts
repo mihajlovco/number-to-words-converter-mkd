@@ -1,14 +1,16 @@
 import { dictionary } from './dictionary';
 import { toTensWords } from './toTensWords';
 import { toUnitsWords } from './toUnitsWords';
-import { numberLenght } from './utils/numberLenght';
+import { numberLength } from './utils/numberLength';
 
 /***
  * Only number that represents the hundreds from 100 - 999
  */
 export const toHundredsWords = (hundreds: number): string => {
-  if (numberLenght(hundreds) != 3) {
-    return '';
+  if (numberLength(hundreds) !== 3) {
+    throw new RangeError(
+      'Hundreds conversion supports numbers between 100 and 999.'
+    );
   }
 
   const quotient = Math.floor(hundreds / 100);
@@ -22,7 +24,7 @@ export const toHundredsWords = (hundreds: number): string => {
   } else {
     // the rest like 400, 500 up to 900 have suffix
     // example: четиристотини, петстотини..
-    words = toUnitsWords(quotient) + dictionary.hundreds.pluralSufix;
+    words = toUnitsWords(quotient) + dictionary.hundreds.pluralSuffix;
   }
 
   if (reminder === 0) {

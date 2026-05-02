@@ -164,4 +164,53 @@ describe('Convert number to words', () => {
   test('converts zero to word', () => {
     expect(toWords(0)).toBe('нула');
   });
+
+  test('throws for invalid non-integer inputs', () => {
+    expect(() => toWords(12.5)).toThrow(TypeError);
+    expect(() => toWords(Number.NaN)).toThrow(TypeError);
+    expect(() => toWords(Number.POSITIVE_INFINITY)).toThrow(TypeError);
+    expect(() => toWords(Number.NEGATIVE_INFINITY)).toThrow(TypeError);
+  });
+
+  test('truncates finite floats when strictInteger is false', () => {
+    expect(toWords(12.5, { strictInteger: false })).toEqual(toWords(12));
+    expect(toWords(-12.7, { strictInteger: false })).toEqual(toWords(-12));
+    expect(toWords(999_999_999_999.9, { strictInteger: false })).toEqual(
+      toWords(999_999_999_999)
+    );
+    expect(() => toWords(1000000000000.1, { strictInteger: false })).toThrow(
+      RangeError
+    );
+  });
+
+  test('rejects NaN and Infinity even when strictInteger is false', () => {
+    expect(() => toWords(Number.NaN, { strictInteger: false })).toThrow(
+      TypeError
+    );
+    expect(() =>
+      toWords(Number.POSITIVE_INFINITY, { strictInteger: false })
+    ).toThrow(TypeError);
+    expect(() =>
+      toWords(Number.NEGATIVE_INFINITY, { strictInteger: false })
+    ).toThrow(TypeError);
+  });
+
+  test('throws for unsupported range', () => {
+    expect(() => toWords(1000000000000)).toThrow(RangeError);
+    expect(() => toWords(-1000000000000)).toThrow(RangeError);
+  });
+
+  test('handles contract boundaries and keeps output normalized', () => {
+    expect(toWords(999999999999)).toBe(
+      'деветстотини деведесет и девет милијарди деветстотини деведесет и девет милиони деветстотини деведесет и девет илјади деветстотини деведесет и девет'
+    );
+    expect(toWords(-999999999999)).toBe(
+      'минус деветстотини деведесет и девет милијарди деветстотини деведесет и девет милиони деветстотини деведесет и девет илјади деветстотини деведесет и девет'
+    );
+
+    const sample = toWords(381401152);
+    expect(sample).not.toContain('  ');
+    expect(sample.trim()).toBe(sample);
+    expect(toWords(381401152)).toBe(toWords(381401152));
+  });
 });

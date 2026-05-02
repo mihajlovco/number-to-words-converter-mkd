@@ -14,23 +14,37 @@ export enum SmallNumbersOrder {
 
 export type NumberOrderType = LargeNumbersOrder | SmallNumbersOrder;
 
+export type NumberRange = {
+  from: number;
+  to: number;
+};
+
 export type ClassifiedNumber = {
   order: NumberOrderType;
-  lenght: { from: number; to: number };
+  length: NumberRange;
   divider: number;
 };
 
 export type LargeNumbersMetaOptions = {
   // Example: 1034039 - 1 million is leading part of this number
   isLargestNumberOrderPart: boolean;
-  orderType: NumberOrderType;
 };
 
-export type Dictionary = {
-  [key in NumberOrderType]: {
-    [key: number | string]: string;
-    singularSuffix: string;
-    pluralSuffix: string;
-    sufixUnder20?: string;
-  };
+export type DictionaryEntry = {
+  [key: number | string]: string;
+  singularSuffix: string;
+  pluralSuffix: string;
+  suffixUnder20: string;
+};
+
+export type Dictionary = Record<NumberOrderType, DictionaryEntry> & {
+  minus: string;
+};
+
+export type ToWordsOptions = {
+  /**
+   * When true (default), only finite integers are accepted.
+   * When false, finite floats are truncated toward zero with `Math.trunc` before conversion.
+   */
+  strictInteger?: boolean;
 };

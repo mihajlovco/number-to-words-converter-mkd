@@ -4,8 +4,17 @@
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "sourceMap": true,
+    "rootDir": ".",
     "outDir": "dist"
   },
-  "lib": ["es2015"]
+  "lib": ["es2017"],
+  "include": ["index.ts", "types.ts", "src/**/*.ts"],
+  "exclude": ["dist", "tests", "node_modules"]
 }

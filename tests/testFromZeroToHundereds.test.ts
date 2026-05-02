@@ -34,7 +34,7 @@ describe('Convert number to words', () => {
     expect(toTensWords(83)).toBe('осумдесет и три');
     expect(toTensWords(90)).toBe('деведесет');
     expect(toTensWords(99)).toBe('деведесет и девет');
-    expect(toTensWords(100)).toBe(null);
+    expect(() => toTensWords(100)).toThrow(RangeError);
   });
 
   it('should return words for numbers from 100 - 999', () => {

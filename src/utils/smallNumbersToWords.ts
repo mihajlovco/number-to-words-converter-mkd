@@ -1,20 +1,22 @@
 import { toHundredsWords } from '../toHundredsWords';
 import { toTensWords } from '../toTensWords';
 import { toUnitsWords } from '../toUnitsWords';
-import { numberLenght } from './numberLenght';
+import { numberLength } from './numberLength';
 
-export const smallNumbersToWords = (num: number) => {
-  const numLenght = numberLenght(num);
+export const smallNumbersToWords = (num: number): string => {
+  const numLength = numberLength(num);
 
-  if (numLenght === 0 || numLenght === 1) {
+  if (numLength === 1) {
     return toUnitsWords(num);
   }
 
-  if (numLenght === 2) {
+  if (numLength === 2) {
     return toTensWords(num);
   }
 
-  if (numLenght === 3) {
+  if (numLength === 3) {
     return toHundredsWords(num);
   }
+
+  throw new RangeError('Small number conversion supports numbers up to 999.');
 };

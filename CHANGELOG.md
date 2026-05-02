@@ -1,5 +1,26 @@
 # number-to-words-converter-mkd
 
+## 1.0.0
+
+### Major Changes
+
+- Harden the public API and package delivery for v1 by enforcing strict integer/range validation, improving type safety, migrating CI workflows to pnpm, and expanding release and contributor documentation.
+
+## Unreleased
+
+### Added
+
+- Optional `toWords(value, { strictInteger?: boolean })`: opt-in truncation of finite floats with `Math.trunc` while keeping strict integer validation by default.
+
+### Changed
+
+- Hardened API contract with strict integer/range validation and typed errors.
+- Refined typing and naming consistency for internal dictionary/order models.
+- Migrated project workflows and scripts to pnpm-first CI/release execution.
+- Improved package shipping metadata (`exports`, `types`, `files`, declarations).
+- Expanded tests for validation boundaries and output invariants.
+- Expanded documentation with usage, contract, contributing, and security guidance.
+
 ## 0.0.4
 
 ### Patch Changes

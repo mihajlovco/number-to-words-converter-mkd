@@ -1,17 +1,20 @@
 import { shouldAppendAnd, appendAnd } from './grammar/conjunctions';
-import { getClassifiedNumberByLenght } from './grammar/numberOrderClassification';
+import { getClassifiedNumberByLength } from './grammar/numberOrderClassification';
 import { smallNumbersToWords } from './utils/smallNumbersToWords';
 import { largeNumberPartToWords } from './toLargeNumbersWords';
 import { isLargeNumbersOrder } from './utils/isLargeNumbersOrder';
 import { isSmallNumbersOrder } from './utils/isSmallNumbersOrder';
-import { numberLenght } from './utils/numberLenght';
+import { numberLength } from './utils/numberLength';
 import { splitNumber } from './utils/splitNumber';
 
 export const convertToWords = (number: number): string => {
   let words = '';
 
-  const numLenght = numberLenght(number);
-  let classifiedNumber = getClassifiedNumberByLenght(numLenght);
+  const numLength = numberLength(number);
+  let classifiedNumber = getClassifiedNumberByLength(numLength);
+  if (!classifiedNumber) {
+    throw new RangeError('Number order is not supported.');
+  }
 
   if (isSmallNumbersOrder(classifiedNumber.order)) {
     return smallNumbersToWords(number);
@@ -37,9 +40,12 @@ export const convertToWords = (number: number): string => {
     );
 
     // Classify the reminder for the next iteration
-    const reminderClassifiedNumber = getClassifiedNumberByLenght(
-      numberLenght(reminder)
+    const reminderClassifiedNumber = getClassifiedNumberByLength(
+      numberLength(reminder)
     );
+    if (!reminderClassifiedNumber) {
+      throw new RangeError('Number order is not supported.');
+    }
 
     // Check if this is the last large number part
     const isLastLargeOrderNumberPart = isSmallNumbersOrder(
